@@ -40,3 +40,4 @@ alias measurement tp_meas {
 	export real tplh_L2=rise_L-fall_in
 	
 }
+run tp_meas

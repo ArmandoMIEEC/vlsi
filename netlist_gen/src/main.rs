@@ -1,6 +1,8 @@
 use std::fs;
 use std::fs::File;
 use std::io::prelude::*;
+/*use std::rand;
+use std::rand::Rng;*/
 
 fn main() {
     let mut a: [i32; 16] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -82,6 +84,20 @@ fn main() {
         a[elem] = 0;
         filenumber = filenumber + 1;
     }
+
+    //aleatorios
+    /*for param in a.iter_mut() {
+        *param = rng.gen_range(0..10);
+    }
+    for param in b.iter_mut() {
+        *param = rng.gen_range(0..10);
+    }
+
+    for _ in 1..15 {
+        newfilename = format!("{}", filenumber);
+        gen_netlist(filename, newfilename.as_str(), &a, &b);
+        filenumber = filenumber + 1;
+    }*/
 }
 
 fn gen_mdl(filename: &str, newfilename: &str, bit: &str) {
