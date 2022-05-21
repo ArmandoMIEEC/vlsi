@@ -12,7 +12,7 @@ Settings options rawfmt=psfbin
 simulatorOptions options temp=70 gmindc=1e-15
 
 global 0 VDD
-parameters Supply=1.0 rise_time=1ps fall_time=1ps high_time=4ns perd=16ns
+parameters Supply=1.0 rise_time=1ps fall_time=1ps high_time=8ns perd=16ns
 parameters	Supply = 1.0
 
 subckt invchain in out
