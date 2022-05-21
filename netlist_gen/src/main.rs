@@ -10,7 +10,7 @@ fn main() {
         *param = 1;
     }
 
-    let filenumber = 0;
+    let mut filenumber = 0;
     let filename = "tb.scs";
     let mut newfilename = format!("{}", filenumber);
 
@@ -18,11 +18,12 @@ fn main() {
     gen_netlist(filename, newfilename.as_str(), &a, &b);
 
     //A->tudo a 1 B->varia
-    for filenumber in 1..15 {
-        b[filenumber] = 1;
+    for elem in 1..15 {
+        b[elem] = 1;
         newfilename = format!("{}", filenumber);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
-        b[filenumber] = 0;
+        b[elem] = 0;
+        filenumber = filenumber + 1;
     }
 
     for param in a.iter_mut() {
@@ -30,19 +31,21 @@ fn main() {
     }
 
     //A->tudo a 0 B->varia
-    for filenumber in 1..15 {
-        b[filenumber] = 1;
+    for elem in 1..15 {
+        b[elem] = 1;
         newfilename = format!("{}", filenumber);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
-        b[filenumber] = 0;
+        b[elem] = 0;
+        filenumber = filenumber + 1;
     }
 
     //B->tudo a 0 A->varia
-    for filenumber in 1..15 {
-        a[filenumber] = 1;
+    for elem in 1..15 {
+        a[elem] = 1;
         newfilename = format!("{}", filenumber);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
-        a[filenumber] = 0;
+        a[elem] = 0;
+        filenumber = filenumber + 1;
     }
 
     for param in a.iter_mut() {
@@ -50,11 +53,12 @@ fn main() {
     }
 
     //B->tudo a 1 A->varia
-    for filenumber in 1..15 {
-        a[filenumber] = 1;
+    for elem in 1..15 {
+        a[elem] = 1;
         newfilename = format!("{}", filenumber);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
-        a[filenumber] = 0;
+        a[elem] = 0;
+        filenumber = filenumber + 1;
     }
 }
 
