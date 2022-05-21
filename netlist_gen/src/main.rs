@@ -72,10 +72,11 @@ fn gen_netlist(filename: &str, newfilename: &str, a: &[i32], b: &[i32]) {
     }
 
     for elem in b.iter() {
-        newline.push_str(format!("s{}={}, ", cnt, elem).as_str());
         if cnt == 31 {
             newline.push_str(format!("s{}={};", cnt, elem).as_str());
+            break;
         }
+        newline.push_str(format!("s{}={}, ", cnt, elem).as_str());
         cnt = cnt + 1;
     }
 
