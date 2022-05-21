@@ -86,14 +86,14 @@ fn main() {
 
     //aleatorios
     let mut rng = rand::thread_rng();
-    for param in a.iter_mut() {
-        *param = rng.gen_range(0..1);
-    }
-    for param in b.iter_mut() {
-        *param = rng.gen_range(0..1);
-    }
 
     for _ in 1..15 {
+        for param in a.iter_mut() {
+            *param = rng.gen_range(0..2);
+        }
+        for param in b.iter_mut() {
+            *param = rng.gen_range(0..2);
+        }
         newfilename = format!("{}", filenumber);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
         filenumber = filenumber + 1;
