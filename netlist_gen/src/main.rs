@@ -44,7 +44,7 @@ fn gen_netlist(filename: &str, newfilename: &str, a: &[i32], b: &[i32]) {
     let path = "/Users/armando/Documents/mac/my_dir/github/vlsi/netlist_gen/docs/";
     let file = fs::read_to_string(format!("{}{}", path, filename))
         .expect("Something went wrong reading the file");
-    let mut new_file = File::create(format!("{}{}", path, newfilename))
+    let mut new_file = File::create(format!("{}{}.scs", path, newfilename))
         .expect("Something went wrong creating the file");
 
     let mut line_number = 0;
