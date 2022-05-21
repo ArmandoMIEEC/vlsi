@@ -14,13 +14,47 @@ fn main() {
     let filename = "tb.scs";
     let mut newfilename = format!("{}", filenumber);
 
+    //A->tudo a 1 B->tudo a 0
     gen_netlist(filename, newfilename.as_str(), &a, &b);
 
+    //A->tudo a 1 B->varia
     for filenumber in 1..15 {
         b[filenumber] = 1;
         newfilename = format!("{}", filenumber);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
         b[filenumber] = 0;
+    }
+
+    for param in a.iter_mut() {
+        *param = 0;
+    }
+
+    //A->tudo a 0 B->varia
+    for filenumber in 1..15 {
+        b[filenumber] = 1;
+        newfilename = format!("{}", filenumber);
+        gen_netlist(filename, newfilename.as_str(), &a, &b);
+        b[filenumber] = 0;
+    }
+
+    //B->tudo a 0 A->varia
+    for filenumber in 1..15 {
+        a[filenumber] = 1;
+        newfilename = format!("{}", filenumber);
+        gen_netlist(filename, newfilename.as_str(), &a, &b);
+        a[filenumber] = 0;
+    }
+
+    for param in a.iter_mut() {
+        *param = 1;
+    }
+
+    //B->tudo a 1 A->varia
+    for filenumber in 1..15 {
+        a[filenumber] = 1;
+        newfilename = format!("{}", filenumber);
+        gen_netlist(filename, newfilename.as_str(), &a, &b);
+        a[filenumber] = 0;
     }
 }
 
