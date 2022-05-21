@@ -62,25 +62,29 @@ fn main() {
     }
 }
 
+/*fn gen_mdl(filename: &str, newfilename: &str, in: &str){
+
+}*/
+
 fn gen_netlist(filename: &str, newfilename: &str, a: &[i32], b: &[i32]) {
     let mut newline = String::from("parameters ");
     let mut cnt = 0;
 
     for elem in a.iter() {
-        newline.push_str(format!("s{}={}, ", cnt, elem).as_str());
+        newline.push_str(format!("s{}={} ", cnt, elem).as_str());
         cnt = cnt + 1;
     }
 
     for elem in b.iter() {
         if cnt == 31 {
-            newline.push_str(format!("s{}={};", cnt, elem).as_str());
+            newline.push_str(format!("s{}={}", cnt, elem).as_str());
             break;
         }
-        newline.push_str(format!("s{}={}, ", cnt, elem).as_str());
+        newline.push_str(format!("s{}={} ", cnt, elem).as_str());
         cnt = cnt + 1;
     }
 
-    let path = "/Users/armando/Documents/mac/my_dir/github/vlsi/netlist_gen/docs/";
+    let path = "/Users/armando/Documents/mac/my_dir/github/vlsi/netlist_gen/docs/scs/";
     let file = fs::read_to_string(format!("{}{}", path, filename))
         .expect("Something went wrong reading the file");
     let mut new_file = File::create(format!("{}{}.scs", path, newfilename))
