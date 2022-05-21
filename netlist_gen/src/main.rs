@@ -62,8 +62,33 @@ fn main() {
     }
 }
 
-/*fn gen_mdl(filename: &str, newfilename: &str, in: &str){
+/*fn gen_mdl(filename: &str, newfilename: &str, in_opt: &str, bit: i32) {
+    let mut pre_newline_rise = String::from("real rise_in=cross(sig=V(");
+    let post_newline_rise = "), dir='rise, n=1, thresh=Supply/2, start=0)";
+    let mut pre_newline_fall = String::from("real fall_in=cross(sig=V(");
+    let post_newline_fall = "), dir='fall, n=1, thresh=Supply/2, start=0)";
 
+    let mut cnt = 0;
+
+    let path = "/Users/armando/Documents/mac/my_dir/github/vlsi/netlist_gen/docs/mdl/";
+    let file = fs::read_to_string(format!("{}{}", path, filename))
+        .expect("Something went wrong reading the file");
+    let mut new_file = File::create(format!("{}{}.mdl", path, newfilename))
+        .expect("Something went wrong creating the file");
+
+    let mut line_number = 0;
+    for line in file.lines() {
+        if line_number == 15 {
+            new_file
+                .write_all(format!("{}\n", newline).as_bytes())
+                .expect("Something went wrong writing a line");
+        } else {
+            new_file
+                .write_all(format!("{}\n", line).as_bytes())
+                .expect("Something went wrong writing a line");
+        }
+        line_number = line_number + 1;
+    }
 }*/
 
 fn gen_netlist(filename: &str, newfilename: &str, a: &[i32], b: &[i32]) {
