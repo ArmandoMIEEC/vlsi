@@ -1,8 +1,7 @@
 use std::fs;
 use std::fs::File;
 use std::io::prelude::*;
-/*use std::rand;
-use std::rand::Rng;*/
+//extern crate rand;
 
 fn main() {
     let mut a: [i32; 16] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
