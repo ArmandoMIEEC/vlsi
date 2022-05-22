@@ -95,20 +95,20 @@ fn gen_netlist(filename: &str, newfilename: &str, an: &u16, bn: &u16) {
     let mut b: [i32; 16] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let mut newline = String::from("parameters ");
     let mut cnt = 0;
-    let mut mask = 0b1000000000000000;
+    let mut mask = 0b0000000000000001;
 
     for i in 0..16 {
         let bit = *an & mask != 0;
         a[i] = bit as i32;
-        mask >>= 1;
+        mask <<= 1;
     }
 
-    mask = 0b1000000000000000;
+    mask = 0b0000000000000001;
 
     for i in 0..16 {
         let bit = bn & mask != 0;
         b[i] = bit as i32;
-        mask >>= 1;
+        mask <<= 1;
     }
 
     for elem in a.iter() {

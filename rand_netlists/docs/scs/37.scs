@@ -13,7 +13,7 @@ simulatorOptions options temp=70 gmindc=1e-15
 
 global 0 VDD
 parameters Supply=1.0 rise_time=1ps fall_time=1ps high_time=8ns perd=16ns
-parameters s0=0 s1=1 s2=1 s3=0 s4=0 s5=0 s6=0 s7=0 s8=1 s9=0 s10=1 s11=0 s12=1 s13=0 s14=1 s15=1 s16=0 s17=1 s18=0 s19=1 s20=1 s21=1 s22=1 s23=0 s24=0 s25=0 s26=0 s27=0 s28=1 s29=0 s30=0 s31=1
+parameters s0=1 s1=0 s2=1 s3=0 s4=0 s5=1 s6=1 s7=0 s8=0 s9=0 s10=0 s11=0 s12=1 s13=0 s14=0 s15=1 s16=0 s17=1 s18=0 s19=0 s20=0 s21=0 s22=1 s23=1 s24=0 s25=0 s26=0 s27=1 s28=0 s29=1 s30=1 s31=0
 
 subckt invchain in out
 M1 (X in VDD VDD)	g45p1svt l=45n w=240n
@@ -31,22 +31,22 @@ ends outinv
 Vdd (VDD 0) vsource dc=Supply
 
 //Alterar Nomes e por os outros?
-Va0  (AV0 0) vsource type=pulse val0=0 val1=s0 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va1  (AV1 0) vsource type=pulse val0=0 val1=s1 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va2  (AV2 0) vsource type=pulse val0=0 val1=s2 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va3  (AV3 0) vsource type=pulse val0=0 val1=s3 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va4  (AV4 0) vsource type=pulse val0=0 val1=s4 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va5  (AV5 0) vsource type=pulse val0=0 val1=s5 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va6  (AV6 0) vsource type=pulse val0=0 val1=s6 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va7  (AV7 0) vsource type=pulse val0=0 val1=s7 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va8  (AV8 0) vsource type=pulse val0=0  val1=s8 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va9  (AV9 0) vsource type=pulse val0=0 val1=s9 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va10  (AV10 0) vsource type=pulse val0=0 val1=s10 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va11  (AV11 0) vsource type=pulse val0=s11 val1=s11 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va12  (AV12 0) vsource type=pulse val0=s12 val1=s12 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va13  (AV13 0) vsource type=pulse val0=s13 val1=s13 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va14  (AV14 0) vsource type=pulse val0=s14 val1=s14 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
-Va15  (AV15 0) vsource type=pulse val0=s15 val1=s15 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va0  (AV0 0) vsource type=pulse val0=0 val1=s0 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va1  (AV1 0) vsource type=pulse val0=0 val1=s1 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va2  (AV2 0) vsource type=pulse val0=0 val1=s2 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va3  (AV3 0) vsource type=pulse val0=0 val1=s3 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va4  (AV4 0) vsource type=pulse val0=0 val1=s4 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va5  (AV5 0) vsource type=pulse val0=0 val1=s5 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va6  (AV6 0) vsource type=pulse val0=0 val1=s6 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va7  (AV7 0) vsource type=pulse val0=0 val1=s7 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va8  (AV8 0) vsource type=pulse val0=0  val1=s8 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va9  (AV9 0) vsource type=pulse val0=0 val1=s9 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va10  (AV10 0) vsource type=pulse val0=0 val1=s10 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va11  (AV11 0) vsource type=pulse val0=s11 val1=s11 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va12  (AV12 0) vsource type=pulse val0=s12 val1=s12 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va13  (AV13 0) vsource type=pulse val0=s13 val1=s13 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va14  (AV14 0) vsource type=pulse val0=s14 val1=s14 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
+Va15  (AV15 0) vsource type=pulse val0=s15 val1=s15 period=perd delay=1n rise=rise_time fall=fall_time width=high_time
 
 Vb0  (BV0 0) vsource type=pulse val0=0 val1=s16 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
 Vb1  (BV1 0) vsource type=pulse val0=0 val1=s17 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
