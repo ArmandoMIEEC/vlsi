@@ -71,7 +71,7 @@ fn main() {
     }
 
     //B->tudo a 1 A->varia
-    for elem in 1..15 {
+    for elem in 0..16 {
         a[elem] = 1;
         newfilename = format!("{}", filenumber);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
