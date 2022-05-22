@@ -56,15 +56,14 @@ fn main() {
 }
 
 fn gen_mdl(filename: &str, newfilename: &str, bit: &str) {
-    let mut pre_pre_risea = String::from("    real rise_in");
+    let mut pre_pre_risea = String::from("    real rise_inA");
     let pre_risea = String::from("=cross(sig=V(");
     let post_risea = "), dir='rise, n=1, thresh=Supply/2, start=0)";
     let newline_risea: String;
     let newline_riseb = String::from(
-        "    real rise_inB15=cross(sig=V(B15), dir='rise, n=1, thresh=Supply/2, start=0)",
+        "    real rise_inB=cross(sig=V(B15), dir='rise, n=1, thresh=Supply/2, start=0)",
     );
 
-    pre_pre_risea.push_str(format!("{}", bit).as_str());
     pre_pre_risea.push_str(pre_risea.as_str());
     pre_pre_risea.push_str(format!("{}", bit).as_str());
     pre_pre_risea.push_str(post_risea);
