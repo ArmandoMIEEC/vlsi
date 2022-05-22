@@ -7,7 +7,7 @@ fn main() {
     let mut a: u16;
     let mut b: u16;
     let mut rng = rand::thread_rng();
-    let change_bit = 15;
+    let change_bit = 14;
 
     let filename = "tb.scs";
     let filename_mdl = "del.mdl";
@@ -15,7 +15,7 @@ fn main() {
     a = rng.gen_range(0..65534);
     b = rng.gen_range(0..a);
 
-    for elem in 1..250 {
+    for elem in 1..50 {
         let newfilename = format!("{}", elem);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
         gen_mdl(
