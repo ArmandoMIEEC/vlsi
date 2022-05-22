@@ -30,7 +30,7 @@ alias measurement tp_meas {
 	export real tplh_E=rise_E-fall_in
 	export real tphl_G=fall_G-fall_in
 	export real tplh_G=rise_G-rise_in
-	export real tphl_L=fall_L-rise_in
+	export real tphl_L=fall_L-fall_in
 	export real tplh_L=rise_L-rise_in
 }
 run tp_meas

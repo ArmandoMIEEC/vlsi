@@ -12,16 +12,16 @@ fn main() {
     let filename = "tb.scs";
     let filename_mdl = "del.mdl";
 
-    a = rng.gen_range(0..65534);
-    b = rng.gen_range(0..a);
+    b = rng.gen_range(0..65534);
+    a = rng.gen_range(0..b);
 
-    for elem in 1..50 {
+    for elem in 1..100 {
         let newfilename = format!("{}", elem);
         gen_netlist(filename, newfilename.as_str(), &a, &b);
         gen_mdl(
             filename_mdl,
             newfilename.as_str(),
-            format!("A{}", change_bit).as_str(),
+            format!("B{}", change_bit).as_str(),
         );
 
         a = rng.gen_range(0..65534);
