@@ -1,0 +1,113 @@
+//16 bit comparator testbench
+
+simulator lang=hspice
+
+.include "comparator.sp"
+
+simulator lang=spectre
+
+include "/home/pcvlsi01/projects/gpdk045/LAB1-ArMi/models/spectre/gpdk045.scs" section=mc
+
+Settings options rawfmt=psfbin
+simulatorOptions options temp=70 gmindc=1e-15
+
+global 0 VDD
+parameters Supply=1.0 rise_time=1ps fall_time=1ps high_time=8ns perd=16ns
+parameters s0=0 s1=0 s2=1 s3=1 s4=0 s5=0 s6=1 s7=0 s8=1 s9=0 s10=0 s11=1 s12=0 s13=1 s14=0 s15=1 s16=0 s17=0 s18=0 s19=0 s20=0 s21=0 s22=0 s23=0 s24=0 s25=0 s26=0 s27=0 s28=0 s29=0 s30=0 s31=0
+
+subckt invchain in out
+M1 (X in VDD VDD)	g45p1svt l=45n w=240n
+M2 (X in 0 0) 		g45n1svt l=45n w=120n
+M3 (out X VDD VDD)	g45p1svt l=45n w=240n
+M4 (out X 0 0) 		g45n1svt l=45n w=120n
+ends invchain
+
+subckt outinv in out
+M1 (out in VDD VDD)	g45p1svt l=45n w=960n
+M2 (out in 0 0) 		g45n1svt l=45n w=480n
+ends outinv
+
+//Signals
+Vdd (VDD 0) vsource dc=Supply
+
+//Alterar Nomes e por os outros?
+Va0  (AV0 0) vsource type=pulse val0=0 val1=s0 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va1  (AV1 0) vsource type=pulse val0=0 val1=s1 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va2  (AV2 0) vsource type=pulse val0=0 val1=s2 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va3  (AV3 0) vsource type=pulse val0=0 val1=s3 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va4  (AV4 0) vsource type=pulse val0=0 val1=s4 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va5  (AV5 0) vsource type=pulse val0=0 val1=s5 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va6  (AV6 0) vsource type=pulse val0=0 val1=s6 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va7  (AV7 0) vsource type=pulse val0=0 val1=s7 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va8  (AV8 0) vsource type=pulse val0=0  val1=s8 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va9  (AV9 0) vsource type=pulse val0=0 val1=s9 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va10  (AV10 0) vsource type=pulse val0=0 val1=s10 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va11  (AV11 0) vsource type=pulse val0=s11 val1=s11 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va12  (AV12 0) vsource type=pulse val0=s12 val1=s12 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va13  (AV13 0) vsource type=pulse val0=s13 val1=s13 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va14  (AV14 0) vsource type=pulse val0=s14 val1=s14 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+Va15  (AV15 0) vsource type=pulse val0=s15 val1=s15 period=perd delay=0 rise=rise_time fall=fall_time width=high_time
+
+Vb0  (BV0 0) vsource type=pulse val0=0 val1=s16 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb1  (BV1 0) vsource type=pulse val0=0 val1=s17 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb2  (BV2 0) vsource type=pulse val0=0 val1=s18 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb3  (BV3 0) vsource type=pulse val0=0 val1=s19 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb4  (BV4 0) vsource type=pulse val0=0 val1=s20 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb5  (BV5 0) vsource type=pulse val0=0 val1=s21 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb6  (BV6 0) vsource type=pulse val0=0 val1=s22 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb7  (BV7 0) vsource type=pulse val0=0 val1=s23 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb8  (BV8 0) vsource type=pulse val0=0 val1=s24 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb9  (BV9 0) vsource type=pulse val0=0 val1=s25 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb10  (BV10 0) vsource type=pulse val0=0 val1=s26 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb11  (BV11 0) vsource type=pulse val0=0 val1=s27 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb12  (BV12 0) vsource type=pulse val0=0 val1=s28 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb13  (BV13 0) vsource type=pulse val0=0 val1=s29 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb14  (BV14 0) vsource type=pulse val0=0 val1=s30 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+Vb15  (BV15 0) vsource type=pulse val0=0 val1=s31 period=perd delay=4n rise=rise_time fall=fall_time width=high_time
+
+
+//Instances
+
+I0 (AV0 A0) invchain
+I1 (AV1 A1) invchain
+I2 (AV2 A2) invchain
+I3 (AV3 A3) invchain
+I4 (AV4 A4) invchain
+I5 (AV5 A5) invchain
+I6 (AV6 A6) invchain
+I7 (AV7 A7) invchain
+I8 (AV8 A8) invchain
+I9 (AV9 A9) invchain
+I10 (AV10 A10) invchain
+I11 (AV11 A11) invchain
+I12 (AV12 A12) invchain
+I13 (AV13 A13) invchain
+I14 (AV14 A14) invchain
+I15 (AV15 A15) invchain
+
+I16 (BV0 B0) invchain
+I17 (BV1 B1) invchain
+I18 (BV2 B2) invchain
+I19 (BV3 B3) invchain
+I20 (BV4 B4) invchain
+I21 (BV5 B5) invchain
+I22 (BV6 B6) invchain
+I23 (BV7 B7) invchain
+I24 (BV8 B8) invchain
+I25 (BV9 B9) invchain
+I26 (BV10 B10) invchain
+I27 (BV11 B11) invchain
+I28 (BV12 B12) invchain
+I29 (BV13 B13) invchain
+I30 (BV14 B14) invchain
+I31 (BV15 B15) invchain
+
+I32 (0 VDD A0 A1 A10 A11 A12 A13 A14 A15 A2 A3 A4 A5 A6 A7 A8 A9 B0 B1 B10 B11 B12 B13 B14 B15 B2 B3 B4 B5 B6 B7 B8 B9 E G L) comparator 
+ 
+I33 (E EOUT) outinv
+I34 (G GOUT) outinv
+I35 (L LOUT) outinv
+
+
+Wave tran stop=20n step=0.005
+
