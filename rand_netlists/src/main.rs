@@ -14,7 +14,7 @@ fn main() {
     let filename_mdl = "del.mdl";
 
     a = rng.gen_range(0..65534);
-    b = rng.gen_range(00..a);
+    b = rng.gen_range(0..a);
 
     for i in 0..16 {
         let bit = a & mask != 0;
@@ -35,7 +35,18 @@ fn main() {
         );
 
         a = rng.gen_range(0..65534);
-        b = rng.gen_range(00..a);
+        b = rng.gen_range(0..a);
+
+        for i in 0..16 {
+            let bit = a & mask != 0;
+            if bit {
+                change_bit = i;
+                break;
+            }
+            mask >>= 1;
+        }
+
+        println!("a:{:b}, b:{:b}, change_bit:{}", a, b, change_bit);
     }
 }
 
@@ -91,6 +102,8 @@ fn gen_netlist(filename: &str, newfilename: &str, an: &u16, bn: &u16) {
         a[i] = bit as i32;
         mask >>= 1;
     }
+
+    mask = 0b1000000000000000;
 
     for i in 0..16 {
         let bit = bn & mask != 0;
