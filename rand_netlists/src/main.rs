@@ -7,23 +7,13 @@ fn main() {
     let mut a: u16;
     let mut b: u16;
     let mut rng = rand::thread_rng();
-    let mut change_bit = 0;
-    let mut mask = 0b1000000000000000;
+    let change_bit = 15;
 
     let filename = "tb.scs";
     let filename_mdl = "del.mdl";
 
     a = rng.gen_range(0..65534);
     b = rng.gen_range(0..a);
-
-    for i in 0..16 {
-        let bit = a & mask != 0;
-        if bit {
-            change_bit = i;
-            break;
-        }
-        mask >>= 1;
-    }
 
     for elem in 1..250 {
         let newfilename = format!("{}", elem);
@@ -36,15 +26,6 @@ fn main() {
 
         a = rng.gen_range(0..65534);
         b = rng.gen_range(0..a);
-
-        for i in 0..16 {
-            let bit = a & mask != 0;
-            if bit {
-                change_bit = i;
-                break;
-            }
-            mask >>= 1;
-        }
 
         println!("a:{:b}, b:{:b}, change_bit:{}", a, b, change_bit);
     }
