@@ -56,19 +56,19 @@ fn main() {
 }
 
 fn gen_mdl(filename: &str, newfilename: &str, bit: &str) {
-    let mut pre_newline_rise = String::from("    real rise_in=cross(sig=V(");
-    let post_newline_rise = "), dir='rise, n=1, thresh=Supply/2, start=0)";
-    let mut pre_newline_fall = String::from("    real fall_in=cross(sig=V(");
-    let post_newline_fall = "), dir='fall, n=1, thresh=Supply/2, start=0)";
-    let newline_rise: String;
-    let newline_fall: String;
+    let mut pre_pre_risea = String::from("    real rise_in");
+    let pre_risea = String::from("=cross(sig=V(");
+    let post_risea = "), dir='rise, n=1, thresh=Supply/2, start=0)";
+    let newline_risea: String;
+    let newline_riseb = String::from(
+        "    real rise_inB15=cross(sig=V(B15), dir='rise, n=1, thresh=Supply/2, start=0)",
+    );
 
-    pre_newline_rise.push_str(format!("{}", bit).as_str());
-    pre_newline_rise.push_str(post_newline_rise);
-    newline_rise = pre_newline_rise.clone();
-    pre_newline_fall.push_str(format!("{}", bit).as_str());
-    pre_newline_fall.push_str(post_newline_fall);
-    newline_fall = pre_newline_fall.clone();
+    pre_pre_risea.push_str(format!("{}", bit).as_str());
+    pre_pre_risea.push_str(pre_risea.as_str());
+    pre_pre_risea.push_str(format!("{}", bit).as_str());
+    pre_pre_risea.push_str(post_risea);
+    newline_risea = pre_pre_risea.clone();
 
     let path = "/Users/armando/Documents/mac/my_dir/github/vlsi/max_delay/docs/mdl/";
     let file = fs::read_to_string(format!("{}{}", path, filename))
@@ -80,11 +80,11 @@ fn gen_mdl(filename: &str, newfilename: &str, bit: &str) {
     for line in file.lines() {
         if line_number == 2 {
             new_file
-                .write_all(format!("{}\n", newline_rise).as_bytes())
+                .write_all(format!("{}\n", newline_risea).as_bytes())
                 .expect("Something went wrong writing a line");
         } else if line_number == 3 {
             new_file
-                .write_all(format!("{}\n", newline_fall).as_bytes())
+                .write_all(format!("{}\n", newline_riseb).as_bytes())
                 .expect("Something went wrong writing a line");
         } else {
             new_file

@@ -1,7 +1,7 @@
 alias measurement tp_meas {
 	run tran(stop=20n,method='trap)
-    real rise_in=cross(sig=V(A6), dir='rise, n=1, thresh=Supply/2, start=0)
-    real fall_in=cross(sig=V(A6), dir='fall, n=1, thresh=Supply/2, start=0)
+    real rise_inA6=cross(sig=V(A6), dir='rise, n=1, thresh=Supply/2, start=0)
+    real rise_inB15=cross(sig=V(B15), dir='rise, n=1, thresh=Supply/2, start=0)
 	real fall_E=cross(sig=V(E), dir='fall, n=1, thresh=Supply/2, start=0)
 	real rise_E=cross(sig=V(E), dir='rise, n=1, thresh=Supply/2, start=0)
 	real rise_G=cross(sig=V(G), dir='rise, n=1, thresh=Supply/2, start=0)

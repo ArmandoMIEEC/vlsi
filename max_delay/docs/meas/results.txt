@@ -1,1 +1,37 @@
 
+***0.measure***
+tphl_E                  5.93277e-10 
+tphl_G                  2.15548e-09 
+tplh_G                  4.19571e-10 
+tplh_L                  2.22081e-09 
+
+***1.measure***
+tphl_E                  5.93277e-10 
+tphl_G                  2.15548e-09 
+tplh_G                  4.19571e-10 
+tplh_L                  2.22081e-09 
+
+***2.measure***
+tphl_E                  5.93277e-10 
+tphl_G                  2.15548e-09 
+tplh_G                  4.19571e-10 
+tplh_L                  2.22081e-09 
+
+***0.measure***
+tphl_E                  5.93277e-10 
+tphl_G                  2.15548e-09 
+tplh_G                  4.19571e-10 
+tplh_L                  2.22081e-09 
+
+***1.measure***
+tphl_E                  5.93277e-10 
+tphl_G                  2.15548e-09 
+tplh_G                  4.19571e-10 
+tplh_L                  2.22081e-09 
+
+***2.measure***
+tphl_E                  5.93277e-10 
+tphl_G                  2.15548e-09 
+tplh_G                  4.19571e-10 
+tplh_L                  2.22081e-09 
+
