@@ -56,7 +56,44 @@ fn main() {
 }
 
 fn gen_mdl(filename: &str, newfilename: &str, bit: &str) {
-    let mut pre_pre_risea = String::from("    real riseA_in");
+    let mut pre_newline_rise = String::from("    real riseA_in=cross(sig=V(");
+    let post_newline_rise = "), dir='rise, n=1, thresh=Supply/2, start=0)";
+    let mut pre_newline_fall = String::from("    real fallA_in=cross(sig=V(");
+    let post_newline_fall = "), dir='fall, n=1, thresh=Supply/2, start=0)";
+    let newline_rise: String;
+    let newline_fall: String;
+
+    pre_newline_rise.push_str(format!("{}", bit).as_str());
+    pre_newline_rise.push_str(post_newline_rise);
+    newline_rise = pre_newline_rise.clone();
+    pre_newline_fall.push_str(format!("{}", bit).as_str());
+    pre_newline_fall.push_str(post_newline_fall);
+    newline_fall = pre_newline_fall.clone();
+
+    let path = "/Users/armando/Documents/mac/my_dir/github/vlsi/max_delay/docs/mdl/";
+    let file = fs::read_to_string(format!("{}{}", path, filename))
+        .expect("Something went wrong reading the file");
+    let mut new_file = File::create(format!("{}{}.mdl", path, newfilename))
+        .expect("Something went wrong creating the file");
+
+    let mut line_number = 0;
+    for line in file.lines() {
+        if line_number == 2 {
+            new_file
+                .write_all(format!("{}\n", newline_rise).as_bytes())
+                .expect("Something went wrong writing a line");
+        } else if line_number == 4 {
+            new_file
+                .write_all(format!("{}\n", newline_fall).as_bytes())
+                .expect("Something went wrong writing a line");
+        } else {
+            new_file
+                .write_all(format!("{}\n", line).as_bytes())
+                .expect("Something went wrong writing a line");
+        }
+        line_number = line_number + 1;
+    }
+    /*let mut pre_pre_risea = String::from("    real riseA_in");
     let pre_risea = String::from("=cross(sig=V(");
     let post_risea = "), dir='rise, n=1, thresh=Supply/2, start=0)";
     let newline_risea: String;
@@ -91,7 +128,7 @@ fn gen_mdl(filename: &str, newfilename: &str, bit: &str) {
                 .expect("Something went wrong writing a line");
         }
         line_number = line_number + 1;
-    }
+    }*/
 }
 
 fn gen_netlist(filename: &str, newfilename: &str, a: &[i32], b: &[i32]) {

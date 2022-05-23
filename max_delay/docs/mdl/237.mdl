@@ -2,6 +2,8 @@ alias measurement tp_meas {
 	run tran(stop=20n,method='trap)
     real riseA_in=cross(sig=V(A14), dir='rise, n=1, thresh=Supply/2, start=0)
     real riseB_in=cross(sig=V(B15), dir='rise, n=1, thresh=Supply/2, start=0)
+    real fallA_in=cross(sig=V(A14), dir='fall, n=1, thresh=Supply/2, start=0)
+	real fallB_in=cross(sig=V(B15), dir='fall, n=1, thresh=Supply/2, start=0)
 	real fall_E=cross(sig=V(E), dir='fall, n=1, thresh=Supply/2, start=0)
 	real rise_E=cross(sig=V(E), dir='rise, n=1, thresh=Supply/2, start=0)
 	real rise_G=cross(sig=V(G), dir='rise, n=1, thresh=Supply/2, start=0)
@@ -12,6 +14,7 @@ alias measurement tp_meas {
 	export real tphl_G=fall_G-riseB_in
 	export real tplh_G=rise_G-riseA_in
 	export real tplh_L=rise_L-riseB_in
-	
+	export real tplh_E=rise_E-fallB_in
+	export real tphl_L=fall_L-fallB_in
 }
 run tp_meas
