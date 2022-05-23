@@ -50,7 +50,7 @@ fn main() {
         a[a1] = 0;
     }
 
-    for i in 0..3 {
+    for i in 0..256 {
         read_meas_file(format!("{}.measure", i).as_str());
     }
 }

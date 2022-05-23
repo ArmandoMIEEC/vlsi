@@ -1,0 +1,19 @@
+Exported variables from results directory:  ./scs/208.raw/
+
+date               :  12:51:52 AM, Mon May 23, 2022
+design             :  //16 bit comparator testbench
+simulator          :  spectre
+version            :  20.1.0.354.isr11
+
+
+Measurement Name   :  tp_meas
+Analysis Type      :  tran
+tphl_E                =  5.09764e-10 
+tphl_G                =  3.81355e-09 
+tplh_G                =  3.96464e-10 
+tplh_L                =  3.87695e-09 
+
+
+
+
+
